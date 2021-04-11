@@ -78,4 +78,19 @@ public class UserService  implements UserDetailsService{
 			throw new ResourceNotFoundException("Record not found with id : " + user.getId());
 		}
 	}
+
+	/**
+	 * This Method is used to delete the User entity from database using UserRepository interface
+	 * @param id
+	 * @throws Exception
+	 */
+	public void deleteUser(Integer id) throws Exception{
+		
+		Optional< User > userdb = userRepository.findById(id);
+		if(userdb.isPresent()) {
+			userRepository.delete(userdb.get());
+		}else {
+			throw new ResourceNotFoundException("Record not found with id : " + id);
+		}
+	}
 }
