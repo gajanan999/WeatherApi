@@ -8,7 +8,7 @@ public class RestResponse {
 
 	private HttpStatus code;
 	private String message;
-	List<Object> data;
+	List<?> data;
 	public HttpStatus getCode() {
 		return code;
 	}
@@ -21,10 +21,10 @@ public class RestResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public List<Object> getData() {
+	public List<?> getData() {
 		return data;
 	}
-	public void setData(List<Object> data) {
+	public void setData(List<?> data) {
 		this.data = data;
 	}
 	

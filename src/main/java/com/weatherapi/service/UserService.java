@@ -93,4 +93,27 @@ public class UserService  implements UserDetailsService{
 			throw new ResourceNotFoundException("Record not found with id : " + id);
 		}
 	}
+
+	/**
+	 * This method is used to fetch all the users from the database
+	 * @return List<User>
+	 */
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
+	}
+
+	/**
+	 * This method is used to fetch the user which has id = givenid
+	 * here givenid = parameter passed to method argument
+	 * @param id
+	 * @return User
+	 */
+	public User getUserById(Integer id) {
+		Optional< User > userdb = userRepository.findById(id);
+		if(userdb.isPresent()) {
+			return userdb.get();
+		}else {
+			throw new ResourceNotFoundException("Record not found with id : " + id);
+		}
+	}
 }
