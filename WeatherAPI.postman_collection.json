@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "4e6c4f5d-d03a-41ff-ad3f-32082a85c62c",
+		"name": "WeatherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Gajanan1\",\r\n    \"password\":\"Gajanan1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODIzMzcwMCwiZXhwIjoxNjE4MzIwMTAwfQ.W5xo8r9mnwBoqHN5cyB7YxY_mQFI6RLh3_d4bASYVXE7cIII0aBPHv3_KBeNRCdU0H3wyCI5eUG0dqHKF4SnFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"username\":\"Gajanan1\",\r\n    \"password\":\"Gajanan1\",\r\n    \"active\":true,\r\n    \"roles\":\"ROLE_ADMIN\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/weatherapi/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weatherapi",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODIzMzcwMCwiZXhwIjoxNjE4MzIwMTAwfQ.W5xo8r9mnwBoqHN5cyB7YxY_mQFI6RLh3_d4bASYVXE7cIII0aBPHv3_KBeNRCdU0H3wyCI5eUG0dqHKF4SnFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"username\":\"Gajanan1\",\r\n    \"password\":\"Gajanan1\",\r\n    \"active\":true,\r\n    \"roles\":\"ROLE_ADMIN\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/weatherapi/users/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weatherapi",
+						"users",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODIzMzcwMCwiZXhwIjoxNjE4MzIwMTAwfQ.W5xo8r9mnwBoqHN5cyB7YxY_mQFI6RLh3_d4bASYVXE7cIII0aBPHv3_KBeNRCdU0H3wyCI5eUG0dqHKF4SnFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/weatherapi/users/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weatherapi",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODIzMzcwMCwiZXhwIjoxNjE4MzIwMTAwfQ.W5xo8r9mnwBoqHN5cyB7YxY_mQFI6RLh3_d4bASYVXE7cIII0aBPHv3_KBeNRCdU0H3wyCI5eUG0dqHKF4SnFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/weatherapi/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weatherapi",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODIzMzcwMCwiZXhwIjoxNjE4MzIwMTAwfQ.W5xo8r9mnwBoqHN5cyB7YxY_mQFI6RLh3_d4bASYVXE7cIII0aBPHv3_KBeNRCdU0H3wyCI5eUG0dqHKF4SnFQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/weatherapi/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weatherapi",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

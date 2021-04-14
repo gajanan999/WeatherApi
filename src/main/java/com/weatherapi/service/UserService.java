@@ -25,6 +25,9 @@ public class UserService  implements UserDetailsService{
 	@Autowired
 	UserToMyUserDetailsMapper userToMyUserDetailsMapper;
 
+	/**
+	 * This method is used to load a user from DB using username
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		List<User> users = userRepository.findByUsername(username);

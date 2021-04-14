@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.weatherapi.constants.Constants;
 import com.weatherapi.service.UserService;
 
 
@@ -53,9 +54,9 @@ public class AuthTokenFilter extends OncePerRequestFilter{
 	}
 
 	private String parseJwt(HttpServletRequest request) {
-		String headerAuth = request.getHeader("Authorization");
+		String headerAuth = request.getHeader(Constants.AUTHORIZATION);
 
-		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
+		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith(Constants.BEARER)) {
 			return headerAuth.substring(7, headerAuth.length());
 		}
 

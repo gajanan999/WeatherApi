@@ -1,6 +1,5 @@
 package com.weatherapi.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.weatherapi.config.Message;
+import com.weatherapi.constants.Constants;
 import com.weatherapi.entity.User;
 import com.weatherapi.model.RestResponse;
-import com.weatherapi.security.JwtUtils;
 import com.weatherapi.service.UserService;
 
 
@@ -30,12 +29,11 @@ import com.weatherapi.service.UserService;
 public class UsersController {
 	
 	@Autowired
-	private AuthenticationManager authenticationManager;
-	
-	@Autowired
-	private JwtUtils jwtTokenUtil;
-	@Autowired
 	private UserService userService;
+	
+	/*
+	 * @Autowired Message message;
+	 */
 	
 
 	@GetMapping(value = "/")
@@ -62,7 +60,7 @@ public class UsersController {
 			User user = userService.getUserById(id);
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.OK);
-			respose.setMessage("User fetched successfully");
+			respose.setMessage("gfdsgdf");
 			respose.setData(Arrays.asList(user));
 			return new ResponseEntity<>(respose, HttpStatus.OK);
 		} catch (Exception e) {
