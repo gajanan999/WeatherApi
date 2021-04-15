@@ -30,7 +30,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	private  String[] paths= {
 			"/v2/api-docs", "/webjars/**", "/metrics", "/monitor", "/ping", "/health",
 			"/configuration/ui", "/configuration/security", "/swagger-ui.html", "/swagger-resources",
-			"/swagger-resources/configuration/ui", "/swagger-resources/configuration/security", "/console/**","/login","/h2/**", "/favicon.ico/**"
+			"/swagger-resources/configuration/ui", "/swagger-resources/configuration/security", "/console/**","/login","/signup","/h2/**", "/favicon.ico/**"
 	};
 	
 	@Autowired 

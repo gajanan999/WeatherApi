@@ -11,4 +11,7 @@ public interface UserSearchHistoryRepository extends JpaRepository<UserSearchHis
 
 	@Query("select h from UserSearchHistory h join h.user u where u.id=?1")
 	Page<UserSearchHistory> findByUserId(int id,Pageable pageable);
+	
+	@Query("select count(h) from UserSearchHistory h join h.user u where u.id=?1")
+	Long findCountByUserId(int id);
 }

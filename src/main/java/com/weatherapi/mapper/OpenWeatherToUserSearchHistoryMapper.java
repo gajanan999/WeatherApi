@@ -32,6 +32,7 @@ public class OpenWeatherToUserSearchHistoryMapper {
 		userSearchHistory.setMaxTemperature(openWeatherApiResponse.getMain().getTemp_max());
 		userSearchHistory.setSunrise(openWeatherApiResponse.getSys().getSunrise());
 		userSearchHistory.setSunset(openWeatherApiResponse.getSys().getSunset());
+		userSearchHistory.setDt(openWeatherApiResponse.getDt());
 		
 		Set<Weather> list = new HashSet<>();
 		for(OpenWeatherModel model : openWeatherApiResponse.getWeather()) {

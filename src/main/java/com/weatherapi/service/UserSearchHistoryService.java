@@ -162,6 +162,19 @@ public class UserSearchHistoryService {
 		
 		return deleted;
 	}
-	
+
+	public Long getUserSerchHistoryCount(String username) {
+		List< User > userDb = userRepository.findByUsername(username);
+		if(null != userDb && userDb.size()>0){
+			User user = userDb.get(0);
+			if(user.getRoles().contains(Constants.ROLE_ADMIN)){
+				return Long.valueOf(userSearchHistoryRepository.count());
+			}else {
+				Long count = userSearchHistoryRepository.findCountByUserId(user.getId());
+				return count;
+			}
+		}
+		return 0L;
+	}
 
 }

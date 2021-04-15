@@ -13,6 +13,7 @@ public class OpenWeatherApiResponse {
 	List<OpenWeatherModel> weather;
 	private OpenWeatherSysModel sys;
 	private OpenWeatherMainModel main;
+	private Long dt;
 	
 	
 	
@@ -65,6 +66,13 @@ public class OpenWeatherApiResponse {
 	}
 	public void setMain(OpenWeatherMainModel main) {
 		this.main = main;
+	}
+	
+	public Long getDt() {
+		return dt;
+	}
+	public void setDt(Long dt) {
+		this.dt = dt;
 	}
 	//toString()
 	@Override

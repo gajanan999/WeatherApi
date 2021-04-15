@@ -1,6 +1,7 @@
 package com.weatherapi.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +38,9 @@ public class User implements Serializable{
 	
 	@Column(name="roles")
     private String roles;
+	
+	@Column(name="birthdate")
+	private Date birthdate;
     
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="user",cascade={CascadeType.ALL})
 	List<UserSearchHistory> userSearchHistory;
@@ -71,6 +75,12 @@ public class User implements Serializable{
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
-	
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
     
+	
 }

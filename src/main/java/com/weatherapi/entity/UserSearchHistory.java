@@ -43,10 +43,12 @@ public class UserSearchHistory {
 	@Column(name="sunset")
 	private Long sunset;
 	
+	@Column(name="datetime")
+	private Long dt;
+	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="userSearchHistory", cascade = CascadeType.ALL)
 	Set<Weather> weather=new HashSet<>();	
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id")
 	private User user;
@@ -121,6 +123,14 @@ public class UserSearchHistory {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Long getDt() {
+		return dt;
+	}
+
+	public void setDt(Long dt) {
+		this.dt = dt;
 	}
 	
 }

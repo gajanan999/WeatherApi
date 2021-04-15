@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,11 +25,13 @@ import com.weatherapi.constants.Constants;
 import com.weatherapi.entity.UserSearchHistory;
 import com.weatherapi.model.DeleteUserSearchHistoryRequest;
 import com.weatherapi.model.RestResponse;
+import com.weatherapi.model.UserSearchHistoryResponse;
 import com.weatherapi.security.JwtUtils;
 import com.weatherapi.service.UserSearchHistoryService;
 
 @RestController
 @RequestMapping(value = "/weatherapi")
+@CrossOrigin
 public class SearchHistoryController {
 	
 	private static Logger logger =  LoggerFactory.getLogger(SearchHistoryController.class);
@@ -49,17 +52,17 @@ public class SearchHistoryController {
 			if(null == username)
 				throw new Exception("Invalid User");
 			userSearchHistory = userSearchHistoryService.updateWeatherDetails(username,userSearchHistory);
-		    RestResponse respose = new RestResponse(); respose.setCode(HttpStatus.OK);
-		    respose.setMessage("updated and fetched");
-		    respose.setData(Arrays.asList(userSearchHistory));
-			return new ResponseEntity<>(respose, HttpStatus.OK);
+		    RestResponse response = new RestResponse(); response.setCode(HttpStatus.OK);
+		    response.setMessage("updated and fetched");
+		    response.setData(Arrays.asList(userSearchHistory));
+			return new ResponseEntity<>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			RestResponse respose = new RestResponse();
-			respose.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
-			respose.setMessage(e.getMessage());
-			respose.setData(Collections.emptyList());
-			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
+			RestResponse response = new RestResponse();
+			response.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
+			response.setMessage(e.getMessage());
+			response.setData(Collections.emptyList());
+			return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -71,17 +74,23 @@ public class SearchHistoryController {
 			if(null == username)
 				throw new Exception("Invalid User");
 			List<UserSearchHistory> userSearchHistory = userSearchHistoryService.getUserSearchHisotry(username, page,size);
-		    RestResponse respose = new RestResponse(); respose.setCode(HttpStatus.OK);
-		    respose.setMessage(message.getMessage(Constants.USER_SEARCH_HISTORY_FETCHED_SUCCESSFULLY));
-		    respose.setData(Arrays.asList(userSearchHistory));
-			return new ResponseEntity<>(respose, HttpStatus.OK);
+			UserSearchHistoryResponse response = new UserSearchHistoryResponse();
+			
+		    //RestResponse respose = new RestResponse(); 
+			response.setCode(HttpStatus.OK);
+			response.setLength(userSearchHistoryService.getUserSerchHistoryCount(username));
+			response.setPageIndex(page);
+			response.setPageSize(size);
+			response.setMessage(message.getMessage(Constants.USER_SEARCH_HISTORY_FETCHED_SUCCESSFULLY));
+			response.setData(userSearchHistory);
+			return new ResponseEntity<>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			RestResponse respose = new RestResponse();
-			respose.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
-			respose.setMessage(e.getMessage());
-			respose.setData(Collections.emptyList());
-			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
+			RestResponse response = new RestResponse();
+			response.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
+			response.setMessage(e.getMessage());
+			response.setData(Collections.emptyList());
+			return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

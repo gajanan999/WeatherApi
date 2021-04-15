@@ -60,7 +60,7 @@ public class UsersController {
 			User user = userService.getUserById(id);
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.OK);
-			respose.setMessage("gfdsgdf");
+			respose.setMessage("User Fetched Successfully");
 			respose.setData(Arrays.asList(user));
 			return new ResponseEntity<>(respose, HttpStatus.OK);
 		} catch (Exception e) {
@@ -71,21 +71,7 @@ public class UsersController {
 			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@PostMapping(value = "/")
-	public ResponseEntity<?> createuser(@RequestBody User user){
-		try {
-			User savedUser = userService.createUser(user);
-			return new ResponseEntity<>(savedUser, HttpStatus.OK);
-		} catch (Exception e) {
-			RestResponse respose = new RestResponse();
-			respose.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
-			respose.setMessage(e.getMessage());
-			respose.setData(Collections.emptyList());
-			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
+
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> updateUser(@PathVariable Integer id,@RequestBody User user){
 		try {
