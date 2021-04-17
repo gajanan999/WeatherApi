@@ -6,6 +6,8 @@ target/
 
 out
 
+weatherapi.log
+
 ### STS ###
 .apt_generated
 .classpath

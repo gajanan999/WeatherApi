@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import com.weatherapi.config.Message;
 import com.weatherapi.constants.Constants;
@@ -62,7 +63,16 @@ public class SearchController {
 			logger.error(e.getMessage());
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
-			respose.setMessage(e.getMessage());
+			if( e instanceof WebClientResponseException) {
+				if(((WebClientResponseException)e).getStatusCode() == HttpStatus.NOT_FOUND) {
+					respose.setMessage("City Name is not correct");
+				}else {
+					respose.setMessage(e.getMessage());
+				}
+			}else {
+				respose.setMessage(e.getMessage());
+			}
+			
 			respose.setData(Collections.emptyList());
 			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
