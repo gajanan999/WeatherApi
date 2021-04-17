@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="userdetails", schema = "weatherapidb")
 public class User implements Serializable{
 
 	/**
@@ -42,8 +42,8 @@ public class User implements Serializable{
 	@Column(name="birthdate")
 	private Date birthdate;
     
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="user",cascade={CascadeType.ALL})
-	List<UserSearchHistory> userSearchHistory;
+//	@OneToMany(fetch=FetchType.LAZY,mappedBy="user",cascade={CascadeType.ALL})
+//	List<UserSearchHistory> userSearchHistory;
 	
 	public int getId() {
 		return id;

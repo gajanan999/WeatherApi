@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,11 @@ import com.weatherapi.entity.User;
 import com.weatherapi.model.RestResponse;
 import com.weatherapi.service.UserService;
 
-
+/**
+ * This is Rest controller class to Get,Update,Delete the user entity
+ * @author Gajanan Gaikwad
+ *
+ */
 
 @RestController
 @RequestMapping(value = "/weatherapi/users")
@@ -31,10 +34,8 @@ public class UsersController {
 	@Autowired
 	private UserService userService;
 	
-	/*
-	 * @Autowired Message message;
-	 */
-	
+	@Autowired
+	Message message;
 
 	@GetMapping(value = "/")
 	public ResponseEntity<?> getAllUsers(){
@@ -42,7 +43,7 @@ public class UsersController {
 			List<User> users = userService.getAllUsers();
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.OK);
-			respose.setMessage("Users fetched successfully");
+			respose.setMessage(message.getMessage(Constants.USERS_FETCHED_SUCCESSFULLY));
 			respose.setData(users);
 			return new ResponseEntity<>(respose, HttpStatus.OK);
 		} catch (Exception e) {
@@ -60,7 +61,7 @@ public class UsersController {
 			User user = userService.getUserById(id);
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.OK);
-			respose.setMessage("User Fetched Successfully");
+			respose.setMessage(message.getMessage(Constants.USER_FETCHED_SUCCESSFULLY));
 			respose.setData(Arrays.asList(user));
 			return new ResponseEntity<>(respose, HttpStatus.OK);
 		} catch (Exception e) {
@@ -94,7 +95,7 @@ public class UsersController {
 			userService.deleteUser(id);
 			RestResponse respose = new RestResponse();
 			respose.setCode(HttpStatus.OK);
-			respose.setMessage("User deleted Successfully");
+			respose.setMessage(message.getMessage(Constants.DELETED_USER));
 			respose.setData(Collections.emptyList());
 			return new ResponseEntity<>(respose, HttpStatus.OK);
 		} catch (Exception e) {
@@ -105,6 +106,5 @@ public class UsersController {
 			return new ResponseEntity<>(respose, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
 	
 }

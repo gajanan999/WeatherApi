@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "user_search_history")
+@Table(name = "user_search_history", schema = "weatherapidb")
 public class UserSearchHistory {
 
 	@Id

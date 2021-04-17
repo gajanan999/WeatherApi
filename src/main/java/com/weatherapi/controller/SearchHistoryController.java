@@ -29,6 +29,11 @@ import com.weatherapi.model.UserSearchHistoryResponse;
 import com.weatherapi.security.JwtUtils;
 import com.weatherapi.service.UserSearchHistoryService;
 
+/**
+ * This class is used to update, Get, Delete the user search history
+ * @author Gajanan Gaikwad
+ *
+ */
 @RestController
 @RequestMapping(value = "/weatherapi")
 @CrossOrigin

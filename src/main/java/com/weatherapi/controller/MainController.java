@@ -27,6 +27,11 @@ import com.weatherapi.model.RestResponse;
 import com.weatherapi.security.JwtUtils;
 import com.weatherapi.service.UserService;
 
+/**
+ * This Rest Controller class is used to authenticate and signup the user 
+ * @author Gajanan Gaikwad
+ *
+ */
 @RestController
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @CrossOrigin
@@ -40,6 +45,12 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * This API is used to login the uses using credentials and generate a JWT token
+	 * @param authenticationRequest
+	 * @return authenticationResponse
+	 * @throws Exception
+	 */
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 	HttpHeaders responseHeaders = new HttpHeaders();
@@ -64,6 +75,11 @@ public class MainController {
 	}
 	
 
+	/**
+	 * This method is used to signup the user 
+	 * @param user
+	 * @return RestResponse
+	 */
 	@PostMapping(value = "/signup")
 	public ResponseEntity<?> createuser(@RequestBody User user){
 		try {
