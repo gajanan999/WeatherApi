@@ -18,6 +18,7 @@ public final class Constants {
 	public static final String DELETED_USER_SEARCH_HISTORY_RECORD="DELETED_USER_SEARCH_HISTORY_RECORD";
 	public static final String USERS_FETCHED_SUCCESSFULLY = "USERS_FETCHED_SUCCESSFULLY";
 	public static final String DELETED_USER = "USER_DELETED_SUCCESSFULLY";
+	public static final String CITY_NAME_IS_NOT_VALID = "CITY_NAME_IS_NOT_VALID";
 	
 	
 	

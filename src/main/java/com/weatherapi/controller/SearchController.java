@@ -45,6 +45,12 @@ public class SearchController {
 	@Autowired
 	Message message;
 	
+	/**
+	 * This method is used to find the weather details by city name using rest request
+	 * @param request
+	 * @param cityName
+	 * @return UserSearchHistory
+	 */
 	@GetMapping(value = "/search/{cityName}")
 	public ResponseEntity<?> getWeatherDetailsByCityName(HttpServletRequest request, @PathVariable String cityName){
 		try {
@@ -63,7 +69,7 @@ public class SearchController {
 			respose.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
 			if( e instanceof WebClientResponseException) {
 				if(((WebClientResponseException)e).getStatusCode() == HttpStatus.NOT_FOUND) {
-					respose.setMessage("City Name is not correct");
+					respose.setMessage(message.getMessage(Constants.CITY_NAME_IS_NOT_VALID));
 				}else {
 					respose.setMessage(e.getMessage());
 				}
