@@ -1,5 +1,17 @@
 # WeatherApi
 
+
+## Initial Step 
+
+	Please add JAVA_HOME & M2_HOME environment variable ref : https://www.tutorialspoint.com/maven/maven_environment_setup.htm
+	After adding them, Please check the following commands
+	
+	1. java -version
+	2. mvn -version
+	
+	If you get a successfull result for both of them then can execute following steps
+	
+	
 ##  How to run the Project
 	Pre-requisite : To run the project, you need to have a following softwares/Tools installed into machine
 	1. Java 8
@@ -43,9 +55,14 @@
 	For swagger-ui use the following url 
 		 http://{hostname}:8080/swagger-ui.html
 		 
-		 
 ##  Log file 
 	log file will be created at same directory where you are running the project
 	you can configure logger details using application.property file
 	
 ##  Future Scope
+	1. We can improvise the logging
+	2. We can add ssl integration into it
+	3. We can implement password encryption and decryption from frontend and backend as well
+	4. More Test coverage of the code 
+	
+	
