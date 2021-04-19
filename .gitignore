@@ -7,6 +7,7 @@ target/
 out
 
 weatherapi.log
+weatherapi.log*
 
 ### STS ###
 .apt_generated
