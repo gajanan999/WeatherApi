@@ -9,6 +9,9 @@
 	1. java -version
 	2. mvn -version
 	
+	
+	
+	
 	If you get a successfull result for both of them then can execute following steps
 	
 	
